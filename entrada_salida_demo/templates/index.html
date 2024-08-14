@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Demo de Control de Marcar e Inconsistencias</title>
+    <!-- Vinculo a Bootstrap para diseño adaptable -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Vinculo al CSS personalizado -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Control de Marcar Entrada/Salida</h1>
+        <p><strong>Número de Identificación del Empleado:</strong> {{ numero_identificacion }}</p>
+        <form action="/marcar" method="post">
+            <div class="form-group">
+                <label for="tipo">Tipo de Marca:</label>
+                <select id="tipo" name="tipo" class="form-control" required>
+                    <option value="Entrada">Entrada</option>
+                    <option value="Salida">Salida</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Registrar y Reportar Inconsistencia</button>
+        </form>
+
+        <h2>Historial de Marcas</h2>
+        <ul>
+            {% for marca in marcas %}
+                <li>{{ marca }}</li>
+            {% endfor %}
+        </ul>
+
+        <h2>Historial de Inconsistencias</h2>
+        <ul>
+            {% for inconsistencia in inconsistencias %}
+                <li>{{ inconsistencia }}</li>
+            {% endfor %}
+        </ul>
+
+        {% if request.args.get('mensaje') %}
+            <p class="alert alert-info">{{ request.args.get('mensaje') }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>

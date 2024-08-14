@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Enviar Inconsistencia</title>
+    <!-- Vinculo a Bootstrap para diseño adaptable -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Vinculo al CSS personalizado -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Enviar Inconsistencia</h1>
+        <form action="/enviar_inconsistencia" method="post">
+            <div class="form-group">
+                <label for="tipo_inconsistencia">Tipo de Inconsistencia:</label>
+                <input type="text" id="tipo_inconsistencia" name="tipo_inconsistencia" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="correo_destinatario">Correo del Destinatario:</label>
+                <input type="email" id="correo_destinatario" name="correo_destinatario" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar Inconsistencia</button>
+        </form>
+    </div>
+</body>
+</html>
